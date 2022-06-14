@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="App">
         <Input showDiv={showDiv}  />
-        <Button label="Click me" />
+        <Button/>
       
     </div>
   );

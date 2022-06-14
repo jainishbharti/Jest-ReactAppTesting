@@ -4,7 +4,7 @@ import Input from "./Input";
 
 describe("Input Component", () => {
   it("rendered input", () => {
-    const { getByTestId } = render(<Input showDiv={false} />);
+    const { getByTestId } = render(<Input showDiv={true} />);
 
     const input = getByTestId("searchBar");
     expect(input).toBeInTheDocument();
@@ -22,10 +22,13 @@ describe("Input Component", () => {
     expect(div).not.toBeInTheDocument();
   });
 
-  it("change on input when we type something", () => {
-    act(async () => {
-      const { getByTestId } = render(<Input showDiv={true} />);
+  it("change on input when we type something", async () => {
+    const { getByTestId } = render(<Input showDiv={true} />);
+   await act(async() => {
+      
       const input = getByTestId("searchBar");
+      expect(input).toBeInTheDocument();
+      
       const header = getByTestId("displaySearch");
       const inputWord = "Tyrantt";
       await fireEvent.change(input, { target: { value: inputWord } });
